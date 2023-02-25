@@ -26,7 +26,7 @@ PRETTY_NAME="Buildroot 2014.02"
 ```
 
 # $ kubectl exec -it ambassador-test -c ambassador sh
-````
+```
 kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
 $ uname -air
 Linux ambassador-test 4.15.0-204-generic #215-Ubuntu SMP Fri Jan 20 18:24:59 UTC 2023 x86_64 GNU/Linux
@@ -43,7 +43,6 @@ HOME_URL="https://www.debian.org/"
 SUPPORT_URL="https://www.debian.org/support"
 BUG_REPORT_URL="https://bugs.debian.org/"
 ```
-
 
 
 # $  kubectl logs pod/ambassador-test-webserver
