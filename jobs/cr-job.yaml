@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+        name: cr-job
+spec:
+        schedule: "* * * * *"
+        jobTemplate:
+                spec:
+                        template:
+                                spec:
+                                        containers:
+                                        - name: cr-job
+                                          image: busybox:stable
+                                          imagePullPolicy: IfNotPresent
+                                          command:
+                                          - /bin/sh
+                                          - -c
+                                          - date; echo Hello from the Kubernetes cluster; uname -air; cat /etc/*release*;hostnamectl
+                                        restartPolicy: OnFailure
