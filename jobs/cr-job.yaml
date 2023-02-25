@@ -15,5 +15,5 @@ spec:
                                           command:
                                           - /bin/sh
                                           - -c
-                                          - date; echo Hello from the Kubernetes cluster; uname -air; cat /etc/*release*;hostnamectl
+                                          - date; echo Hello from the Kubernetes cluster; uname -air; ip addr;hostname
                                         restartPolicy: OnFailure
