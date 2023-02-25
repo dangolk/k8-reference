@@ -1,6 +1,6 @@
-#$ kubectl exec -it -n kube-system pod/kube-proxy-xpkp2 sh
+# $ kubectl exec -it -n kube-system pod/kube-proxy-xpkp2 sh
 
-#$ kubectl exec -it -n kube-system pod/calico-node-sjvwr sh
+# $ kubectl exec -it -n kube-system pod/calico-node-sjvwr sh
 ```
 sh-4.4# ip addr | grep inet
     inet 127.0.0.1/8 scope host lo
