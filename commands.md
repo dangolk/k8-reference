@@ -1,3 +1,9 @@
+# If a pod has multiple containers, you can exec into a specific one by specifying container name (-c)
+```
+$ kubectl exec -it sidecar-test -c container sh
+$ kubectl exec -it sidecar-test -c writer sh
+```
+
 # $ kubectl exec -it -n kube-system pod/kube-proxy-xpkp2 sh
 
 # $ kubectl exec -it -n kube-system pod/calico-node-sjvwr sh
