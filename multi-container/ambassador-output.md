@@ -8,6 +8,44 @@ NAME                          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)
 service/ambassador-test-svc   ClusterIP   10.102.172.118   <none>        80/TCP    42m   app=ambassador-test
 service/kubernetes            ClusterIP   10.96.0.1        <none>        443/TCP   17h   <none>
 ```
+
+# $ kubectl exec -it ambassador-test -c main sh
+```
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+sh: shopt: not found
+[ root@ambassador-test:/ ]$ uname -air
+Linux ambassador-test 4.15.0-204-generic #215-Ubuntu SMP Fri Jan 20 18:24:59 UTC 2023 x86_64 GNU/Linux
+[ root@ambassador-test:/ ]$ hostname -i
+192.168.251.112
+[ root@ambassador-test:/ ]$ cat /etc/*release*
+NAME=Buildroot
+VERSION=2014.02
+ID=buildroot
+VERSION_ID=2014.02
+PRETTY_NAME="Buildroot 2014.02"
+```
+
+# $ kubectl exec -it ambassador-test -c ambassador sh
+````
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+$ uname -air
+Linux ambassador-test 4.15.0-204-generic #215-Ubuntu SMP Fri Jan 20 18:24:59 UTC 2023 x86_64 GNU/Linux
+$ hostname -i
+192.168.251.112
+$ cat /etc/*release*
+PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
+NAME="Debian GNU/Linux"
+VERSION_ID="11"
+VERSION="11 (bullseye)"
+VERSION_CODENAME=bullseye
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+```
+
+
+
 # $  kubectl logs pod/ambassador-test-webserver
 ```
 /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
