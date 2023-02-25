@@ -35,12 +35,14 @@ The writer wrote this!
 ```
 
 # $ kubectl exec -it sidecar-test -c writer sh
+```
 kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
 / # ls
 bin     dev     etc     home    lib     lib64   output  proc    root    sys     tmp     usr     var
 / # cat output/data.txt 
 The writer wrote this!
 / # 
+```
 
 # $ kubectl describe pod sidecar-test
 ```
