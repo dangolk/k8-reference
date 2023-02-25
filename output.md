@@ -73,6 +73,30 @@ kubeadm join 192.168.255.129:6443 --token x4dorx.fmyv1kndospjrxov \
 	--discovery-token-ca-cert-hash sha256:8ed226c238241bcbc0e60816cd70c3d2fb8e6aec8f68585101eee1aee02a80d9
 ```
 
+# $ kubectl describe configmap haproxy-config
+```
+Name:         haproxy-config
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+haproxy.cfg:
+----
+frontend ambassador
+  bind *:8080
+  default_backend ambassador_test_svc
+backend ambassador_test_svc
+  server svc ambassador-test-svc:8081
+
+
+BinaryData
+====
+
+Events:  <none>
+````
+
 # $ kubectl describe configmap coredns -n kube-system
 ```
 Name:         coredns
