@@ -184,3 +184,253 @@ BinaryData
 
 Events:  <none>
 ```
+
+# $ kubectl describe configmap -n kube-system calico-config
+```
+Name:         calico-config
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+calico_backend:
+----
+bird
+cni_network_config:
+----
+{
+  "name": "k8s-pod-network",
+  "cniVersion": "0.3.1",
+  "plugins": [
+    {
+      "type": "calico",
+      "log_level": "info",
+      "log_file_path": "/var/log/calico/cni/cni.log",
+      "datastore_type": "kubernetes",
+      "nodename": "__KUBERNETES_NODE_NAME__",
+      "mtu": __CNI_MTU__,
+      "ipam": {
+          "type": "calico-ipam"
+      },
+      "policy": {
+          "type": "k8s"
+      },
+      "kubernetes": {
+          "kubeconfig": "__KUBECONFIG_FILEPATH__"
+      }
+    },
+    {
+      "type": "portmap",
+      "snat": true,
+      "capabilities": {"portMappings": true}
+    },
+    {
+      "type": "bandwidth",
+      "capabilities": {"bandwidth": true}
+    }
+  ]
+}
+typha_service_name:
+----
+none
+veth_mtu:
+----
+0
+
+BinaryData
+====
+
+Events:  <none>
+```
+
+# $ kubectl describe configmap -n kube-system kube-proxy
+```
+Name:         kube-proxy
+Namespace:    kube-system
+Labels:       app=kube-proxy
+Annotations:  kubeadm.kubernetes.io/component-config.hash: sha256:8204ca474001f17ef0dc7012eab0cdc873faa9e8905be788719316f735726192
+
+Data
+====
+config.conf:
+----
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+bindAddress: 0.0.0.0
+bindAddressHardFail: false
+clientConnection:
+  acceptContentTypes: ""
+  burst: 0
+  contentType: ""
+  kubeconfig: /var/lib/kube-proxy/kubeconfig.conf
+  qps: 0
+clusterCIDR: 192.168.0.0/16
+configSyncPeriod: 0s
+conntrack:
+  maxPerCore: null
+  min: null
+  tcpCloseWaitTimeout: null
+  tcpEstablishedTimeout: null
+detectLocal:
+  bridgeInterface: ""
+  interfaceNamePrefix: ""
+detectLocalMode: ""
+enableProfiling: false
+healthzBindAddress: ""
+hostnameOverride: ""
+iptables:
+  masqueradeAll: false
+  masqueradeBit: null
+  minSyncPeriod: 0s
+  syncPeriod: 0s
+ipvs:
+  excludeCIDRs: null
+  minSyncPeriod: 0s
+  scheduler: ""
+  strictARP: false
+  syncPeriod: 0s
+  tcpFinTimeout: 0s
+  tcpTimeout: 0s
+  udpTimeout: 0s
+kind: KubeProxyConfiguration
+metricsBindAddress: ""
+mode: ""
+nodePortAddresses: null
+oomScoreAdj: null
+portRange: ""
+showHiddenMetricsForVersion: ""
+udpIdleTimeout: 0s
+winkernel:
+  enableDSR: false
+  forwardHealthCheckVip: false
+  networkName: ""
+  rootHnsEndpointName: ""
+  sourceVip: ""
+kubeconfig.conf:
+----
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    certificate-authority: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    server: https://192.168.255.129:6443
+  name: default
+contexts:
+- context:
+    cluster: default
+    namespace: default
+    user: default
+  name: default
+current-context: default
+users:
+- name: default
+  user:
+    tokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+BinaryData
+====
+
+Events:  <none>
+```
+
+# $ kubectl describe configmap -n kube-system kubeadm-config
+```
+Name:         kubeadm-config
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+ClusterConfiguration:
+----
+apiServer:
+  extraArgs:
+    authorization-mode: Node,RBAC
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta3
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controllerManager: {}
+dns: {}
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: registry.k8s.io
+kind: ClusterConfiguration
+kubernetesVersion: v1.25.6
+networking:
+  dnsDomain: cluster.local
+  podSubnet: 192.168.0.0/16
+  serviceSubnet: 10.96.0.0/12
+scheduler: {}
+
+
+BinaryData
+====
+
+Events:  <none>
+```
+
+# $ kubectl describe configmap -n kube-system kubelet-config
+```
+Name:         kubelet-config
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  kubeadm.kubernetes.io/component-config.hash: sha256:000a5dd81630f64bd6f310899359dfb9e8818fc8fe011b7fdc0ec73783a42452
+
+Data
+====
+kubelet:
+----
+apiVersion: kubelet.config.k8s.io/v1beta1
+authentication:
+  anonymous:
+    enabled: false
+  webhook:
+    cacheTTL: 0s
+    enabled: true
+  x509:
+    clientCAFile: /etc/kubernetes/pki/ca.crt
+authorization:
+  mode: Webhook
+  webhook:
+    cacheAuthorizedTTL: 0s
+    cacheUnauthorizedTTL: 0s
+cgroupDriver: systemd
+clusterDNS:
+- 10.96.0.10
+clusterDomain: cluster.local
+cpuManagerReconcilePeriod: 0s
+evictionPressureTransitionPeriod: 0s
+fileCheckFrequency: 0s
+healthzBindAddress: 127.0.0.1
+healthzPort: 10248
+httpCheckFrequency: 0s
+imageMinimumGCAge: 0s
+kind: KubeletConfiguration
+logging:
+  flushFrequency: 0
+  options:
+    json:
+      infoBufferSize: "0"
+  verbosity: 0
+memorySwap: {}
+nodeStatusReportFrequency: 0s
+nodeStatusUpdateFrequency: 0s
+resolvConf: /run/systemd/resolve/resolv.conf
+rotateCertificates: true
+runtimeRequestTimeout: 0s
+shutdownGracePeriod: 0s
+shutdownGracePeriodCriticalPods: 0s
+staticPodPath: /etc/kubernetes/manifests
+streamingConnectionIdleTimeout: 0s
+syncFrequency: 0s
+volumeStatsAggPeriod: 0s
+
+
+BinaryData
+====
+
+Events:  <none>
+```
