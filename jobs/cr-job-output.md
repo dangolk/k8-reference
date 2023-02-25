@@ -1,4 +1,5 @@
-$ kubectl get all -o wide
+# $ kubectl get all -o wide
+```
 NAME                        READY   STATUS      RESTARTS   AGE     IP                NODE     NOMINATED NODE   READINESS GATES
 pod/cr-job-27955126-tbmf7   0/1     Completed   0          2m56s   192.168.234.141   ub18c1   <none>           <none>
 pod/cr-job-27955127-7rk4b   0/1     Completed   0          116s    192.168.234.142   ub18c1   <none>           <none>
@@ -14,9 +15,10 @@ NAME                        COMPLETIONS   DURATION   AGE     CONTAINERS   IMAGES
 job.batch/cr-job-27955126   1/1           5s         2m56s   cr-job       busybox:stable   controller-uid=fb1b6fc2-7d21-46c1-bec7-51833bc7e8bd
 job.batch/cr-job-27955127   1/1           4s         116s    cr-job       busybox:stable   controller-uid=6333f869-f629-4a01-ba99-2e32e6f6883f
 job.batch/cr-job-27955128   1/1           5s         56s     cr-job       busybox:stable   controller-uid=d74803aa-e85d-4a1b-9d6a-11079730259c
+```
 
-
-$  kubectl logs pod/cr-job-27955128-nbnz2
+# $  kubectl logs pod/cr-job-27955128-nbnz2
+```
 Sat Feb 25 06:48:01 UTC 2023
 Hello from the Kubernetes cluster
 Linux cr-job-27955128-nbnz2 4.15.0-204-generic #215-Ubuntu SMP Fri Jan 20 18:24:59 UTC 2023 x86_64 GNU/Linux
@@ -35,8 +37,10 @@ Linux cr-job-27955128-nbnz2 4.15.0-204-generic #215-Ubuntu SMP Fri Jan 20 18:24:
     inet6 fe80::e42e:35ff:fe26:d7d5/64 scope link tentative 
        valid_lft forever preferred_lft forever
 cr-job-27955128-nbnz2
+```
 
-$ kubectl describe pod/cr-job-27955128-nbnz2
+# $ kubectl describe pod/cr-job-27955128-nbnz2
+```
 Name:             cr-job-27955128-nbnz2
 Namespace:        default
 Priority:         0
@@ -99,3 +103,4 @@ Events:
   Normal  Created    102s  kubelet            Created container cr-job
   Normal  Started    102s  kubelet            Started container cr-job
 lucifer@ub18c2:~$ 
+```
