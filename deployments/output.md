@@ -117,6 +117,12 @@ Waiting for deployment "rolling-update-deployment" rollout to finish: 4 of 5 upd
 deployment "rolling-update-deployment" successfully rolled out
 ```
 
+## kubectl describe pod/rolling-update-deployment-65df9cd56b-b7z68 | grep Image
+```
+    Image:          nginx:1.16.1
+    Image ID:       docker.io/library/nginx@sha256:d20aa6d1cae56fd17cd458f4807e0de462caf2336f0b70b5eeb69fcaaf30dd9c
+```
+
 # Roll back to Previous version (undo rolling update)
 ## $ kubectl rollout undo deployment/rolling-update-deployment
 ```
@@ -141,4 +147,10 @@ Waiting for deployment "rolling-update-deployment" rollout to finish: 1 old repl
 Waiting for deployment "rolling-update-deployment" rollout to finish: 1 old replicas are pending termination...
 Waiting for deployment "rolling-update-deployment" rollout to finish: 4 of 5 updated replicas are available...
 deployment "rolling-update-deployment" successfully rolled out
+```
+
+## kubectl describe pod/rolling-update-deployment-c6f6dfb8d-8fpk2 | grep Image
+```
+    Image:          nginx:stable
+    Image ID:       docker.io/library/nginx@sha256:52a6b1268e32ed5b6f59da8222f7627979bfb739f32aae3fb5b5ed31b8bf80c4
 ```
