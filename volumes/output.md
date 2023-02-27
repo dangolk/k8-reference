@@ -22,3 +22,24 @@ This is worker 1!
 Writing to the empty dir ...
 ```
 
+# $ kubectl get all -o wide
+```
+NAME                       READY   STATUS      RESTARTS   AGE   IP            NODE     NOMINATED NODE   READINESS GATES
+pod/hostpath-volume-test   0/1     Completed   0          15m   2.2.234.137   ub18c1   <none>           <none>
+pod/pv-pod-test            0/1     Completed   0          17m   2.2.234.136   ub18c1   <none>           <none>
+```
+
+# $ kubectl logs pod/pv-pod-test
+```
+This is worker 1
+Sun Feb 26 22:56:06 CST 2023
+```
+
+# $ kubectl get pv,pvc -o wide
+```
+NAME                           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                  STORAGECLASS   REASON   AGE   VOLUMEMODE
+persistentvolume/hostpath-pv   1Gi        RWO            Retain           Bound    default/hostpath-pvc   slow                    29m   Filesystem
+
+NAME                                 STATUS   VOLUME        CAPACITY   ACCESS MODES   STORAGECLASS   AGE   VOLUMEMODE
+persistentvolumeclaim/hostpath-pvc   Bound    hostpath-pv   1Gi        RWO            slow           26m   Filesystem
+```
