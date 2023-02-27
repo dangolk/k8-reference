@@ -116,6 +116,8 @@ EOF
 
 sudo apt-get update && sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
 
+sudo apt-get update && sudo apt-get install -y kubelet kubeadm kubectl
+
 sudo apt-mark hold kubelet kubeadm kubectl
 
 # On the control plane node only, initialize the cluster and set up kubectl access
