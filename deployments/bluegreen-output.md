@@ -1,5 +1,3 @@
-**bold**
-
 # # $ kubectl get all -o wide --show-labels
 ```
 NAME                                    READY   STATUS    RESTARTS   AGE     IP            NODE     NOMINATED NODE   READINESS GATES   LABELS
@@ -22,7 +20,7 @@ replicaset.apps/green-deployment-7989475869   1         1         1       5m40s 
 ## $ kubectl get service -o wide --show-labels
 ```
 NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE   SELECTOR                         LABELS
-bluegreen-svc-test   ClusterIP   10.96.42.127   <none>        80/TCP    14m   app=bluegreen-test,color=**blue**   <none>
+bluegreen-svc-test   ClusterIP   10.96.42.127   <none>        80/TCP    14m   app=bluegreen-test,color=blue   <none>
 kubernetes           ClusterIP   10.96.0.1      <none>        443/TCP   20h   <none>                           component=apiserver,provider=kubernetes
 ```
 
@@ -46,13 +44,13 @@ I'm green!
 spec:
   selector:
     app: bluegreen-test
-    color: **green**
+    color: green
 ```
 
 ## $ kubectl get service -o wide --show-labels
 ```
 NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE   SELECTOR                         LABELS
-bluegreen-svc-test   ClusterIP   10.96.42.127   <none>        80/TCP    14m   app=bluegreen-test,color=**green**   <none>
+bluegreen-svc-test   ClusterIP   10.96.42.127   <none>        80/TCP    14m   app=bluegreen-test,color=green   <none>
 kubernetes           ClusterIP   10.96.0.1      <none>        443/TCP   20h   <none>                           component=apiserver,provider=kubernetes
 ```
 
