@@ -1,3 +1,5 @@
+**bold**
+
 # # $ kubectl get all -o wide --show-labels
 ```
 NAME                                    READY   STATUS    RESTARTS   AGE     IP            NODE     NOMINATED NODE   READINESS GATES   LABELS
