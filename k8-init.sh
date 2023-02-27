@@ -84,6 +84,7 @@ sudo apt-get update
 # Install Docker Engine, containerd, and Docker Compose
 
 VERSION_STRING=5:23.0.1-1~ubuntu.20.04~focal
+VERSION_STRING=5:23.0.1-1~ubuntu.18.04~bionic
 sudo apt-get install -y docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Add your 'cloud_user' to the docker group
