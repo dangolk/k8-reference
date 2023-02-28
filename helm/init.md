@@ -13,6 +13,7 @@
 ``` kubectl get pods -n dokuwiki 
 kubectl get deployments -n dokuwiki
 kubectl get svc -n dokuwiki
+```
 ## Uninstall the release and delete the Namespace to clean up.
 ``` helm uninstall -n dokuwiki dokuwiki
 kubectl delete namespace dokuwiki
