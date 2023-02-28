@@ -1,9 +1,9 @@
 # Log in to the control plane node.
 # Add a Helm chart repository.
-``` helm repo add bitnami https://charts.bitnami.com/bitnami ```
+``` $ helm repo add bitnami https://charts.bitnami.com/bitnami ```
 
 # Update the repository.
-## helm repo update
+## $ helm repo update
 ```
 Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "bitnami" chart repository
@@ -11,9 +11,8 @@ Update Complete. ⎈Happy Helming!⎈
 ```
 
 # View a list of charts available in the repository.
-## helm search repo bitnami 
+## $ helm search repo bitnami 
 ```
-helm search repo bitnami
 NAME                                        	CHART VERSION	APP VERSION  	DESCRIPTION                                       
 bitnami/airflow                             	14.0.12      	2.5.1        	Apache Airflow is a tool to express and execute...
 bitnami/apache                              	9.2.16       	2.4.55       	Apache HTTP Server is an open-source HTTP serve...
@@ -126,13 +125,13 @@ bitnami/zookeeper                           	11.1.3       	3.8.1        	Apache 
 ```
 
 # Create a Namespace.
-## kubectl create namespace dokuwiki 
+## $ kubectl create namespace dokuwiki 
 ```
 namespace/dokuwiki created
 ```
 
 # Install a chart.
-## helm install --set persistence.enabled=false -n dokuwiki dokuwiki bitnami/dokuwiki 
+## $ helm install --set persistence.enabled=false -n dokuwiki dokuwiki bitnami/dokuwiki 
 ```
 NAME: dokuwiki
 LAST DEPLOYED: Mon Feb 27 19:18:59 2023
@@ -162,7 +161,7 @@ APP VERSION: 20220731.1.0
 ```
 
 # View some of the objects created by the Helm install.
-## kubectl get all -n dokuwiki -o wide
+## $ kubectl get all -n dokuwiki -o wide
 ```
 NAME                            READY   STATUS    RESTARTS   AGE     IP            NODE     NOMINATED NODE   READINESS GATES
 pod/dokuwiki-846dd8d964-km2ll   1/1     Running   0          4h27m   2.2.234.177   ub18c1   <none>           <none>
@@ -178,5 +177,5 @@ replicaset.apps/dokuwiki-846dd8d964   1         1         1       4h27m   dokuwi
 ```
 
 # Uninstall the release and delete the Namespace to clean up.
-## helm uninstall -n dokuwiki dokuwiki
-## kubectl delete namespace dokuwiki
+## $ helm uninstall -n dokuwiki dokuwiki
+## $ kubectl delete namespace dokuwiki
