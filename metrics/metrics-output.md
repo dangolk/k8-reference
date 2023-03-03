@@ -25,6 +25,37 @@
 }
 ```
 
+## $ kubectl get --raw "/apis/metrics.k8s.io/v1beta1/namespaces/default/pods/resource-consumer-pod" | jq 
+```
+{
+  "kind": "PodMetrics",
+  "apiVersion": "metrics.k8s.io/v1beta1",
+  "metadata": {
+    "name": "resource-consumer-pod",
+    "namespace": "default",
+    "creationTimestamp": "2023-03-03T04:43:16Z"
+  },
+  "timestamp": "2023-03-03T04:43:12Z",
+  "window": "14.993s",
+  "containers": [
+    {
+      "name": "busybox-sidecar",
+      "usage": {
+        "cpu": "66759n",
+        "memory": "920Ki"
+      }
+    },
+    {
+      "name": "resource-consumer",
+      "usage": {
+        "cpu": "931979788n",
+        "memory": "41956Ki"
+      }
+    }
+  ]
+}
+```
+
 ## $ kubectl top pod -A
 ```
 NAMESPACE     NAME                                       CPU(cores)   MEMORY(bytes)   
