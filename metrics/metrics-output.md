@@ -1,3 +1,30 @@
+## $ kubectl get --raw "/apis/metrics.k8s.io/v1beta1/nodes/ub18" | jq 
+```
+{
+  "kind": "NodeMetrics",
+  "apiVersion": "metrics.k8s.io/v1beta1",
+  "metadata": {
+    "name": "ub18",
+    "creationTimestamp": "2023-03-03T04:38:08Z",
+    "labels": {
+      "beta.kubernetes.io/arch": "amd64",
+      "beta.kubernetes.io/os": "linux",
+      "kubernetes.io/arch": "amd64",
+      "kubernetes.io/hostname": "ub18",
+      "kubernetes.io/os": "linux",
+      "node-role.kubernetes.io/control-plane": "",
+      "node.kubernetes.io/exclude-from-external-load-balancers": ""
+    }
+  },
+  "timestamp": "2023-03-03T04:37:54Z",
+  "window": "20.064s",
+  "usage": {
+    "cpu": "329087452n",
+    "memory": "2748180Ki"
+  }
+}
+```
+
 ## $ kubectl top pod -A
 ```
 NAMESPACE     NAME                                       CPU(cores)   MEMORY(bytes)   
@@ -25,3 +52,4 @@ ub18     354m         17%    2685Mi          45%
 ub18c1   180m         18%    2244Mi          38%       
 ub18c2   213m         21%    2138Mi          36%       
 ```
+
