@@ -13,17 +13,14 @@ sudo vim /etc/kubernetes/manifests/kube-apiserver.yaml
 - --enable-admission-plugins=NodeRestriction,NamespaceAutoProvision
 ```
 
-## When you save changes to this file, the API Server will be automatically re-created with the new settings. It may become
-unavailable for a few moments during this process. Most kubectl commands will fail during this time, until the new API Server
-is available
+## When you save changes to this file, the API Server will be automatically re-created with the new settings. It may become unavailable for a few moments during this process. Most kubectl commands will fail during this time, until the new API Server is available
 
 ## Try to create new-namespace-pod again.
 ```
 kubectl apply -f new-namespace-pod.yml
 ```
 
-## It should succeed this time, as the NamespaceAutoProvision admission controller will automatically handle the process of
-creating the Namespace.
+## It should succeed this time, as the NamespaceAutoProvision admission controller will automatically handle the process of creating the Namespace.
 
 ## List the Namespaces to see the new Namespace.
 ```
