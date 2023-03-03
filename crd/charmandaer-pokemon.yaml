@@ -1,0 +1,9 @@
+apiVersion: kd.dev/v1
+kind: Pokemon
+metadata:
+ name: charmander-pokemon
+spec:
+ type: Fire
+ name: Charmander
+ desc: 	The flame on its tail indicates Charmander's life force. If it is healthy, the flame burns brightly.
+ gen: I
