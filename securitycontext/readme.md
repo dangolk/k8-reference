@@ -19,3 +19,11 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   42h   <non
 sh: can't create test.txt: Read-only file system
 command terminated with exit code 1
 ```
+
+## $ kubectl exec -it securitycontext-pod sh
+```
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+/ $ su -
+su: must be suid to work properly
+/ $ 
+```
