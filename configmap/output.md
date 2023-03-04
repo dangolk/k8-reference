@@ -47,6 +47,24 @@ BinaryData
 
 Events:  <none>
 ```
+## $ kubectl get configmap -A
+```
+NAMESPACE         NAME                                 DATA   AGE
+default           kube-root-ca.crt                     1      41h
+default           my-configmap                         2      13s
+kube-node-lease   kube-root-ca.crt                     1      41h
+kube-public       cluster-info                         1      41h
+kube-public       kube-root-ca.crt                     1      41h
+kube-system       calico-config                        4      41h
+kube-system       coredns                              1      41h
+kube-system       extension-apiserver-authentication   6      41h
+kube-system       kube-proxy                           2      41h
+kube-system       kube-root-ca.crt                     1      41h
+kube-system       kubeadm-config                       1      41h
+kube-system       kubelet-config                       1      41h
+new-namespace     kube-root-ca.crt                     1      22h
+resources-test    kube-root-ca.crt                     1      21h
+```
 
 ## $ kubectl describe configmap coredns -n kube-system
 ```
@@ -119,6 +137,95 @@ u+98SWv9ZYQATVuTUtTmubvO5OpmGkPfdhM92hsIKiserTzDmOE3SCj867dXC929
 wHI=
 -----END CERTIFICATE-----
 
+
+BinaryData
+====
+
+Events:  <none>
+```
+
+## $ kubectl describe configmap -n kube-system kube-proxy
+```
+Name:         kube-proxy
+Namespace:    kube-system
+Labels:       app=kube-proxy
+Annotations:  kubeadm.kubernetes.io/component-config.hash: sha256:0170d1ad858aa448a39af17f6b908e5183fce93e7fe2bcb2a48ec149be7de37e
+
+Data
+====
+config.conf:
+----
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+bindAddress: 0.0.0.0
+bindAddressHardFail: false
+clientConnection:
+  acceptContentTypes: ""
+  burst: 0
+  contentType: ""
+  kubeconfig: /var/lib/kube-proxy/kubeconfig.conf
+  qps: 0
+clusterCIDR: 5.5.5.5/24
+configSyncPeriod: 0s
+conntrack:
+  maxPerCore: null
+  min: null
+  tcpCloseWaitTimeout: null
+  tcpEstablishedTimeout: null
+detectLocal:
+  bridgeInterface: ""
+  interfaceNamePrefix: ""
+detectLocalMode: ""
+enableProfiling: false
+healthzBindAddress: ""
+hostnameOverride: ""
+iptables:
+  masqueradeAll: false
+  masqueradeBit: null
+  minSyncPeriod: 0s
+  syncPeriod: 0s
+ipvs:
+  excludeCIDRs: null
+  minSyncPeriod: 0s
+  scheduler: ""
+  strictARP: false
+  syncPeriod: 0s
+  tcpFinTimeout: 0s
+  tcpTimeout: 0s
+  udpTimeout: 0s
+kind: KubeProxyConfiguration
+metricsBindAddress: ""
+mode: ""
+nodePortAddresses: null
+oomScoreAdj: null
+portRange: ""
+showHiddenMetricsForVersion: ""
+udpIdleTimeout: 0s
+winkernel:
+  enableDSR: false
+  forwardHealthCheckVip: false
+  networkName: ""
+  rootHnsEndpointName: ""
+  sourceVip: ""
+kubeconfig.conf:
+----
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    certificate-authority: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    server: https://192.168.255.129:6443
+  name: default
+contexts:
+- context:
+    cluster: default
+    namespace: default
+    user: default
+  name: default
+current-context: default
+users:
+- name: default
+  user:
+    tokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
 
 BinaryData
 ====
