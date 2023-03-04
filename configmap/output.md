@@ -47,6 +47,16 @@ BinaryData
 
 Events:  <none>
 ```
+
+## $ kubectl logs pod/cm-pod
+```
+Hello world!
+# A configuration file
+key1=value1
+key2=value2
+```
+
+
 ## $ kubectl get configmap -A
 ```
 NAMESPACE         NAME                                 DATA   AGE
