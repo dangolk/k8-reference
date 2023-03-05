@@ -81,7 +81,7 @@ items:
 kind: List
 metadata:
   resourceVersion: ""
-
+```
 
 # After Applying Network Policy
 ## $ kubectl logs client-pod -n np-test-b
