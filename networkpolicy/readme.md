@@ -1,3 +1,14 @@
+## Create 2 test namespaces
+```
+$ kubectl create namespace np-test-a
+$ kubectl create namespace np-test-a
+```
+## Add labels to these namespaces
+```
+$ kubectl label namespace np-test-a team=ateam
+$ kubectl label namespace np-test-b team=bteam
+```
+
 ## $ kubectl apply -f client-pod.yaml 
 ```
 pod/client-pod created
