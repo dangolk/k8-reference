@@ -1,17 +1,51 @@
-## $ kubectl get ingress,all -o wide --show-labels
+## $ kubectl get all -A -o wide
 ```
-NAME                                             CLASS   HOSTS                     ADDRESS   PORTS   AGE   LABELS
-ingress.networking.k8s.io/ingress-test-ingress   nginx   ingresstest.acloud.guru             80      16m   <none>
+NAMESPACE       NAME                                               READY   STATUS    RESTARTS        AGE     IP                NODE     NOMINATED NODE   READINESS GATES
+default         pod/ingress-test-pod                               1/1     Running   0               46m     5.5.5.15          ub18c2   <none>           <none>
+default         pod/service-server-pod                             1/1     Running   0               89m     5.5.5.200         ub18c1   <none>           <none>
+kube-system     pod/calico-kube-controllers-74677b4c5f-f4tpw       1/1     Running   0               2d22h   5.5.5.131         ub18     <none>           <none>
+kube-system     pod/calico-node-dqmh6                              1/1     Running   0               2d22h   192.168.255.133   ub18c1   <none>           <none>
+kube-system     pod/calico-node-fvqkl                              1/1     Running   0               2d22h   192.168.255.129   ub18     <none>           <none>
+kube-system     pod/calico-node-n6hlt                              1/1     Running   0               2d22h   192.168.255.135   ub18c2   <none>           <none>
+kube-system     pod/coredns-565d847f94-dfgpz                       1/1     Running   0               2d22h   5.5.5.129         ub18     <none>           <none>
+kube-system     pod/coredns-565d847f94-tj7wx                       1/1     Running   0               2d22h   5.5.5.130         ub18     <none>           <none>
+kube-system     pod/etcd-ub18                                      1/1     Running   49              2d22h   192.168.255.129   ub18     <none>           <none>
+kube-system     pod/kube-apiserver-ub18                            1/1     Running   0               2d3h    192.168.255.129   ub18     <none>           <none>
+kube-system     pod/kube-controller-manager-ub18                   1/1     Running   3 (2d3h ago)    2d22h   192.168.255.129   ub18     <none>           <none>
+kube-system     pod/kube-proxy-cz9k8                               1/1     Running   0               2d22h   192.168.255.129   ub18     <none>           <none>
+kube-system     pod/kube-proxy-vwr8b                               1/1     Running   0               2d22h   192.168.255.135   ub18c2   <none>           <none>
+kube-system     pod/kube-proxy-xbbpx                               1/1     Running   0               2d22h   192.168.255.133   ub18c1   <none>           <none>
+kube-system     pod/kube-scheduler-ub18                            1/1     Running   47 (2d3h ago)   2d22h   192.168.255.129   ub18     <none>           <none>
+kube-system     pod/metrics-server-7d9c65958-ghrmp                 1/1     Running   0               2d22h   5.5.5.193         ub18c1   <none>           <none>
+nginx-ingress   pod/nginx-ingress-nginx-ingress-56f6f8d48c-sqnpx   1/1     Running   0               22m     5.5.5.201         ub18c1   <none>           <none>
+np-test-a       pod/server-pod                                     1/1     Running   0               27h     5.5.5.13          ub18c2   <none>           <none>
+np-test-b       pod/client-pod                                     1/1     Running   0               27h     5.5.5.14          ub18c2   <none>           <none>
 
-NAME                     READY   STATUS    RESTARTS   AGE   IP          NODE     NOMINATED NODE   READINESS GATES   LABELS
-pod/ingress-test-pod     1/1     Running   0          20m   5.5.5.15    ub18c2   <none>           <none>            app=ingress-test
-pod/service-server-pod   1/1     Running   0          62m   5.5.5.200   ub18c1   <none>           <none>            app=service-server
+NAMESPACE       NAME                                  TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE     SELECTOR
+default         service/clusterip-service             ClusterIP      10.108.163.34    <none>        8000/TCP                     87m     app=service-server
+default         service/ingress-test-service          ClusterIP      10.100.176.6     <none>        80/TCP                       45m     app=ingress-test
+default         service/kubernetes                    ClusterIP      10.96.0.1        <none>        443/TCP                      2d22h   <none>
+default         service/nodeport-service              NodePort       10.98.202.47     <none>        8080:30080/TCP               74m     app=service-server
+kube-system     service/kube-dns                      ClusterIP      10.96.0.10       <none>        53/UDP,53/TCP,9153/TCP       2d22h   k8s-app=kube-dns
+kube-system     service/metrics-server                ClusterIP      10.110.137.250   <none>        443/TCP                      2d22h   k8s-app=metrics-server
+nginx-ingress   service/nginx-ingress-nginx-ingress   LoadBalancer   10.107.224.139   <pending>     80:32188/TCP,443:30253/TCP   22m     app=nginx-ingress-nginx-ingress
 
-NAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE     SELECTOR             LABELS
-service/clusterip-service      ClusterIP   10.108.163.34   <none>        8000/TCP         60m     app=service-server   <none>
-service/ingress-test-service   ClusterIP   10.100.176.6    <none>        80/TCP           19m     app=ingress-test     <none>
-service/kubernetes             ClusterIP   10.96.0.1       <none>        443/TCP          2d21h   <none>               component=apiserver,provider=kubernetes
-service/nodeport-service       NodePort    10.98.202.47    <none>        8080:30080/TCP   47m     app=service-server   <none>
+NAMESPACE     NAME                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE     CONTAINERS    IMAGES                               SELECTOR
+kube-system   daemonset.apps/calico-node   3         3         3       3            3           kubernetes.io/os=linux   2d22h   calico-node   docker.io/calico/node:v3.25.0        k8s-app=calico-node
+kube-system   daemonset.apps/kube-proxy    3         3         3       3            3           kubernetes.io/os=linux   2d22h   kube-proxy    registry.k8s.io/kube-proxy:v1.25.7   k8s-app=kube-proxy
+
+NAMESPACE       NAME                                          READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS                    IMAGES                                            SELECTOR
+kube-system     deployment.apps/calico-kube-controllers       1/1     1            1           2d22h   calico-kube-controllers       docker.io/calico/kube-controllers:v3.25.0         k8s-app=calico-kube-controllers
+kube-system     deployment.apps/coredns                       2/2     2            2           2d22h   coredns                       registry.k8s.io/coredns/coredns:v1.9.3            k8s-app=kube-dns
+kube-system     deployment.apps/metrics-server                1/1     1            1           2d22h   metrics-server                k8s.gcr.io/metrics-server/metrics-server:v0.6.1   k8s-app=metrics-server
+nginx-ingress   deployment.apps/nginx-ingress-nginx-ingress   1/1     1            1           22m     nginx-ingress-nginx-ingress   nginx/nginx-ingress:3.0.2                         app=nginx-ingress-nginx-ingress
+
+NAMESPACE       NAME                                                     DESIRED   CURRENT   READY   AGE     CONTAINERS                    IMAGES                                            SELECTOR
+kube-system     replicaset.apps/calico-kube-controllers-74677b4c5f       1         1         1       2d22h   calico-kube-controllers       docker.io/calico/kube-controllers:v3.25.0         k8s-app=calico-kube-controllers,pod-template-hash=74677b4c5f
+kube-system     replicaset.apps/coredns-565d847f94                       2         2         2       2d22h   coredns                       registry.k8s.io/coredns/coredns:v1.9.3            k8s-app=kube-dns,pod-template-hash=565d847f94
+kube-system     replicaset.apps/metrics-server-7d9c65958                 1         1         1       2d22h   metrics-server                k8s.gcr.io/metrics-server/metrics-server:v0.6.1   k8s-app=metrics-server,pod-template-hash=7d9c65958
+nginx-ingress   replicaset.apps/nginx-ingress-nginx-ingress-56f6f8d48c   1         1         1       22m     nginx-ingress-nginx-ingress   nginx/nginx-ingress:3.0.2                         app=nginx-ingress-nginx-ingress,pod-template-hash=56f6f8d48c
+
 ```
 
 ## $ kubectl get ingress -o yaml
