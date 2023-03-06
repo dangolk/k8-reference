@@ -66,3 +66,120 @@ Rules:
 Annotations:               <none>
 Events:                    <none>
 ```
+
+## If you want to try accessing your Service through an Ingress controller, you will need to do some additional configuration.
+## First, use Helm to install the nginx Ingress controller.
+```
+helm repo add nginx-stable https://helm.nginx.com/stable
+helm repo update
+kubectl create namespace nginx-ingress
+helm install nginx-ingress nginx-stable/nginx-ingress -n nginx-ingress
+```
+
+## Get the cluster IP of the Ingress controller's Service.
+```
+kubectl get svc nginx-ingress-nginx-ingress -n nginx-ingress -o wide
+
+NAME                          TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE   SELECTOR
+nginx-ingress-nginx-ingress   LoadBalancer   10.107.224.139   <pending>     80:32188/TCP,443:30253/TCP   19m   app=nginx-ingress-nginx-ingress
+```
+
+##  $ kubectl get svc nginx-ingress-nginx-ingress -n nginx-ingress -o yaml
+```
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: nginx-ingress
+    meta.helm.sh/release-namespace: nginx-ingress
+  creationTimestamp: "2023-03-06T02:02:53Z"
+  labels:
+    app.kubernetes.io/instance: nginx-ingress
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: nginx-ingress-nginx-ingress
+    helm.sh/chart: nginx-ingress-0.16.2
+  name: nginx-ingress-nginx-ingress
+  namespace: nginx-ingress
+  resourceVersion: "355968"
+  uid: 12c169e2-cbcf-4e89-a9e4-8c5946ffb453
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.107.224.139
+  clusterIPs:
+  - 10.107.224.139
+  externalTrafficPolicy: Local
+  healthCheckNodePort: 31356
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    nodePort: 32188
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 30253
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  selector:
+    app: nginx-ingress-nginx-ingress
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+```
+
+## Edit your hosts file.
+```
+sudo vi /etc/hosts
+```
+
+## Use the cluster IP to add an entry to the hosts file.
+```
+10.107.224.139 ingresstest.acloud.guru
+```
+
+## Now, test your setup.
+```
+curl ingresstest.acloud.guru
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+
+```
+
+## Observation: accessing directly via IP doesn't work
+```
+curl 10.107.224.139
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx/1.23.3</center>
+</body>
+</html>
+```
