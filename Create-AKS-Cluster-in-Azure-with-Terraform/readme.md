@@ -19,3 +19,59 @@ Download the lab_7_setup.sh script at https://raw.githubusercontent.com/ACloudGu
 Add execute permissions to the script.
 Run the lab_7_setup.sh script.
 ```
+
+## $ cloud [ ~/clouddrive/terraformguru ]$ terraform init
+```
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding hashicorp/azurerm versions matching "~> 2.0"...
+- Installing hashicorp/azurerm v2.99.0...
+- Installed hashicorp/azurerm v2.99.0 (signed by HashiCorp)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
+## $ cloud [ ~/clouddrive/terraformguru ]$ az group list
+```
+[
+  {
+    "id": "/subscriptions/4cedc5dd-e3ad-468d-bf66-32e31bdb9148/resourceGroups/664-29c2715c-create-an-aks-cluster-in-azure-with-t",
+    "location": "centralus",
+    "managedBy": null,
+    "name": "664-29c2715c-create-an-aks-cluster-in-azure-with-t",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  }
+]
+```
+
+## $ cloud [ ~/clouddrive/terraformguru ]$ terraform import azurerm_resource_group.k8s /subscriptions/4cedc5dd-e3ad-468d-bf66-32e31bdb9148/resourceGroups/664-29c2715c-create-an-aks-cluster-in-azure-with-t
+```
+Acquiring state lock. This may take a few moments...
+azurerm_resource_group.k8s: Importing from ID "/subscriptions/4cedc5dd-e3ad-468d-bf66-32e31bdb9148/resourceGroups/664-29c2715c-create-an-aks-cluster-in-azure-with-t"...
+azurerm_resource_group.k8s: Import prepared!
+  Prepared azurerm_resource_group for import
+azurerm_resource_group.k8s: Refreshing state... [id=/subscriptions/4cedc5dd-e3ad-468d-bf66-32e31bdb9148/resourceGroups/664-29c2715c-create-an-aks-cluster-in-azure-with-t]
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+```
