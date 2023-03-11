@@ -75,3 +75,47 @@ Import successful!
 The resources that were imported are shown above. These resources are now in
 your Terraform state and will henceforth be managed by Terraform.
 ```
+
+## cloud [ ~/clouddrive/terraformguru ]$ terraform state list
+```
+azurerm_resource_group.k8s
+```
+
+## cloud [ ~/clouddrive/terraformguru ]$ terraform state show azurerm_resource_group.k8s
+```
+# azurerm_resource_group.k8s:
+resource "azurerm_resource_group" "k8s" {
+    id       = "/subscriptions/4cedc5dd-e3ad-468d-bf66-32e31bdb9148/resourceGroups/664-29c2715c-create-an-aks-cluster-in-azure-with-t"
+    location = "centralus"
+    name     = "664-29c2715c-create-an-aks-cluster-in-azure-with-t"
+    tags     = {}
+
+    timeouts {}
+}
+```
+
+## cloud [ ~/clouddrive/terraformguru ]$ ssh-keygen -m PEM -t rsa -b 4096
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/cloud/.ssh/id_rsa): 
+Created directory '/home/cloud/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/cloud/.ssh/id_rsa
+Your public key has been saved in /home/cloud/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:sKkqpORm9Gr2dztxrlH2WS5clGXRdoiULD4u+iCSDDw cloud@cc-844461a7-5bf6dc786-dztcq
+The key's randomart image is:
++---[RSA 4096]----+
+|           o.o =o|
+|          . + = +|
+|      .  . . o ..|
+|.      +  o .    |
+|.E    o S+ . o   |
+| *.. . .+.+ =    |
+|* = o .o+. = .   |
+|o* + o.+..  .    |
+|=o+.. .+=        |
++----[SHA256]-----+
+```
+
