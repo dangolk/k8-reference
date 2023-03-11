@@ -555,3 +555,14 @@ kube-system   replicaset.apps/konnectivity-agent-7c54dcb545   2         2       
 kube-system   replicaset.apps/metrics-server-58df99c858       0         0         0       6m39s   metrics-server-vpa,metrics-server   mcr.microsoft.com/oss/kubernetes/autoscaler/addon-resizer:1.8.14,mcr.microsoft.com/oss/kubernetes/metrics-server:v0.6.1   k8s-app=metrics-server,pod-template-hash=58df99c858         k8s-app=metrics-server,pod-template-hash=58df99c858
 kube-system   replicaset.apps/metrics-server-5f8d84558d       2         2         2       5m25s   metrics-server-vpa,metrics-server   mcr.microsoft.com/oss/kubernetes/autoscaler/addon-resizer:1.8.14,mcr.microsoft.com/oss/kubernetes/metrics-server:v0.6.1   k8s-app=metrics-server,pod-template-hash=5f8d84558d         k8s-app=metrics-server,pod-template-hash=5f8d84558d
 ```
+
+# After Successfully Deploying the AKS Cluster on Azure:
+[!overview.PNG](./images/overview.PNG)
+[!activity-log.PNG](./images/activity-log.PNG)
+[!conf.PNG](./images/conf.PNG)
+[!namespaces.PNG](./images/namespaces.PNG)
+[!networking.PNG](./images/networking.PNG)
+[!nodepools.PNG](./images/nodepools.PNG)
+[!properties.PNG](./images/properties.PNG)
+[!services-n-ingresses.PNG](./images/services-n-ingresses.PNG)
+[!workloads.PNG](./images/workloads.PNG)
