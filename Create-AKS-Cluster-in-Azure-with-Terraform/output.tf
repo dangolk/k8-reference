@@ -19,7 +19,7 @@ output "cluster_username" {
 }
 
 output "cluster_password" {
-  value = azurerm_kubernetest_cluster.k8s.kube_config.0.password
+  value = azurerm_kubernetes_cluster.k8s.kube_config.0.password
 }
 
 output "kube_config" {
