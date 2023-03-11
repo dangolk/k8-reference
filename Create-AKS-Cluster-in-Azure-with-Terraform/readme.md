@@ -557,12 +557,12 @@ kube-system   replicaset.apps/metrics-server-5f8d84558d       2         2       
 ```
 
 # After Successfully Deploying the AKS Cluster on Azure:
-[!overview.PNG](./images/overview.PNG)
-[!activity-log.PNG](./images/activity-log.PNG)
-[!conf.PNG](./images/conf.PNG)
-[!namespaces.PNG](./images/namespaces.PNG)
-[!networking.PNG](./images/networking.PNG)
-[!nodepools.PNG](./images/nodepools.PNG)
-[!properties.PNG](./images/properties.PNG)
-[!services-n-ingresses.PNG](./images/services-n-ingresses.PNG)
-[!workloads.PNG](./images/workloads.PNG)
+![overview.PNG](./images/overview.PNG)
+![activity-log.PNG](./images/activity-log.PNG)
+![conf.PNG](./images/conf.PNG)
+![namespaces.PNG](./images/namespaces.PNG)
+![networking.PNG](./images/networking.PNG)
+![nodepools.PNG](./images/nodepools.PNG)
+![properties.PNG](./images/properties.PNG)
+![services-n-ingresses.PNG](./images/services-n-ingresses.PNG)
+![workloads.PNG](./images/workloads.PNG)
