@@ -168,3 +168,6 @@ The Kiali dashboard shows an overview of your mesh with the relationships betwee
 ![service-graph.PNG](./images/service-graph.PNG)
 ![versioned-app-graph.PNG](./images/versioned-app-graph.PNG)
 ![workload-graph.PNG](./images/workload-graph.PNG)
+![grafana.PNG](./images/grafana.PNG)
+![jaeger-ui.PNG](./images/jaeger-ui.PNG)
+![prometheus.PNG](./images/prometheus.PNG)
