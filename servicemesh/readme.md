@@ -129,7 +129,7 @@ istio-ingressgateway   LoadBalancer   10.102.166.160   <pending>     15021:31080
 ```
 
 ## http://10.102.166.160/productpage
-![productpage-viz.PNG](./images/productpage-viz.PNG)
+![productpage.PNG](./images/productpage.PNG)
 
 
 # View the dashboard
