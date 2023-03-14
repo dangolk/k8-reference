@@ -1,4 +1,5 @@
-# https://istio.io/latest/docs/setup/getting-started/
+# Istio / Getting Started 
+## https://istio.io/latest/docs/setup/getting-started/
 
 # Download Istio
 ```bash
@@ -128,7 +129,7 @@ istio-ingressgateway   LoadBalancer   10.102.166.160   <pending>     15021:31080
 ```
 
 ## http://10.102.166.160/productpage
-![productpage.png](./images/productpage.png)
+![productpage-viz.PNG](./images/productpage-viz.PNG)
 
 
 # View the dashboard
