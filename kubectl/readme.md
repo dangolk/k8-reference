@@ -1,3 +1,13 @@
+# EXTRACTING KUBECTL SECRET:
+```bash
+$ kubectl -n argocd  get secret argocd-initial-admin-secret
+NAME                          TYPE     DATA   AGE
+argocd-initial-admin-secret   Opaque   1      23m
+
+$ kubectl -n argocd  get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 --decode
+8e2SUH330EPnIqvI
+```
+
 # KUBECTL PATCH:
 ## Before:
 ```bash
