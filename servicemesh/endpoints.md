@@ -5,6 +5,7 @@ $ URL='http://'$IP':'$PORT'/api/v1/products/0/reviews'
 $ echo $URL
 http://7.7.251.69:9080/api/v1/products/0/reviews
 ```
+
 $ curl $URL
 ```json
 {
@@ -30,5 +31,4 @@ $ curl $URL
     }
   ]
 }
-
 ```
