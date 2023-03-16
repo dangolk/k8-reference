@@ -171,3 +171,4 @@ The Kiali dashboard shows an overview of your mesh with the relationships betwee
 ![grafana.PNG](./images/grafana.PNG)
 ![jaeger-ui.PNG](./images/jaeger-ui.PNG)
 ![prometheus.PNG](./images/prometheus.PNG)
+![prometheus-1.PNG](./images/prometheus-1.PNG)
