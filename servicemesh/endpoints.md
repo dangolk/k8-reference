@@ -1,8 +1,8 @@
+```bash
 $ IP=$(kubectl get pod -l app=productpage -o jsonpath='{.items[0].status.podIP}')
 $ PORT=$(kubectl get pod -l app=productpage -o jsonpath='{.items[0].spec.containers[0].ports[0].containerPort}')
 $ URL='http://'$IP':'$PORT'/api/v1/products/0/reviews'
 $ echo $URL
-```bash
 http://7.7.251.69:9080/api/v1/products/0/reviews
 ```
 $ curl $URL
