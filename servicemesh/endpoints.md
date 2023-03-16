@@ -7,7 +7,7 @@ http://7.7.251.69:9080/api/v1/products/0/reviews
 ```
 
 $ curl -v $URL | jq
-```
+```bash
 curl -v 'http://'$IP':'$PORT'/api/v1/products/3/reviews' | jq
 *   Trying 7.7.251.69...
 * TCP_NODELAY set
